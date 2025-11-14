@@ -1,4 +1,4 @@
-/* --- Overlay --- */
+
 .menu-overlay {
   position: fixed;
   inset: 0;
@@ -7,7 +7,7 @@
   z-index: 40;
 }
 
-/* --- Container --- */
+
 .menu-container {
   position: fixed;
   inset: 0;
@@ -24,7 +24,7 @@
   outline: none;
 }
 
-/* --- Bottom Sheet --- */
+
 .menu-sheet {
   position: relative;
   background-color: var(--card);
@@ -38,30 +38,30 @@
   touch-action: none;
 }
 
-/* --- Individual Panel --- */
+
 .menu-panel {
   width: 100%;
-  max-height: 85vh; /* Match the sheet's max-height */
+  max-height: 85vh; 
   
-  /* --- NEW: Use Flexbox to separate header from list --- */
+  
   display: flex;
   flex-direction: column;
   
-  /* Padding is removed, will be added to children */
+  
   padding: 0; 
 }
 
-/* --- NEW: Drag Target Area --- */
+
 .drag-target-area {
-  flex-shrink: 0; /* Prevents this area from shrinking */
-  cursor: grab; /* Shows users it's draggable */
-  padding: 0 1rem; /* Add back the horizontal padding */
+  flex-shrink: 0; 
+  cursor: grab; 
+  padding: 0 1rem; 
 }
 .drag-target-area:active {
   cursor: grabbing;
 }
 
-/* --- Drag Handle Styles --- */
+
 .drag-handle-container {
   width: 100%;
   padding: 0.75rem 0;
@@ -78,7 +78,7 @@
 }
 
 
-/* --- Panel Header --- */
+
 .panel-header {
   display: flex;
   justify-content: space-between;
@@ -116,23 +116,23 @@
   background-color: #f3f4f6;
 }
 
-/* --- Panel List & Items --- */
+
 .panel-list {
   list-style: none;
   
-  /* --- NEW: This is now the scrollable part --- */
-  overflow-y: auto;
-  flex-grow: 1; /* Takes up all remaining space */
-  padding: 0 1rem 1rem 1rem; /* Add horizontal and bottom padding */
   
-  /* --- NEW: HIDE THE SCROLLBAR --- */
-  /* Firefox */
+  overflow-y: auto;
+  flex-grow: 1; 
+  padding: 0 1rem 1rem 1rem; 
+  
+  
+  
   scrollbar-width: none;
-  /* IE and Edge */
+  
   -ms-overflow-style: none;
 }
 
-/* Webkit (Chrome, Safari) */
+
 .panel-list::-webkit-scrollbar {
   display: none;
 }
@@ -187,7 +187,7 @@
 }
 
 
-/* --- Responsive Desktop View --- */
+
 @media (min-width: 640px) {
   .menu-container {
     align-items: center;
@@ -202,19 +202,19 @@
     max-height: 70vh;
   }
   
-  /* Hide drag handle and remove grab cursor on desktop */
+  
   .drag-handle-container {
     display: none;
   }
   .drag-target-area {
     cursor: default;
-    padding-top: 1rem; /* Add back padding since handle is gone */
+    padding-top: 1rem; 
   }
   .drag-target-area:active {
     cursor: default;
   }
 
   .panel-list {
-    padding-top: 0; /* Reset padding */
+    padding-top: 0; 
   }
 }

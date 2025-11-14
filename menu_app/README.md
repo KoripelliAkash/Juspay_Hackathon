@@ -4,7 +4,7 @@ This project is a fully functional, animated, and accessible hierarchical menu c
 
 ## 🚀 Live Demo
 
-**[Live Link](https://your-app-name.vercel.app)**
+**[Live Link](https:
 
 *(You can replace this link after you deploy to Vercel.)*
 
@@ -49,7 +49,7 @@ To run this project on your local machine:
     ```bash
     npm run dev
     ```
-    Your project will be available at `http://localhost:5173` (or a similar port).
+    Your project will be available at `http:
 
 ---
 
@@ -64,21 +64,21 @@ The parent component (`App.jsx`) is responsible for two things:
 2.  Holding a `ref` to the button that opens the menu (for accessibility).
 
 ```jsx
-// Example in App.jsx
+
 import { useState, useRef } from 'react';
 import { HierarchicalMenu } from './components/HierarchicalMenu';
 import { menuData } from './data/menuData';
 
 function App() {
-  // 1. State to control the menu
+  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  // 2. Ref for the trigger button
+  
   const openMenuButtonRef = useRef(null);
 
   return (
     <div>
-      {/* The button that opens the menu */}
+      {}
       <button
         ref={openMenuButtonRef}
         onClick={() => setIsMenuOpen(true)}
@@ -86,7 +86,7 @@ function App() {
         Open Menu
       </button>
 
-      {/* The menu component itself */}
+      {}
       <HierarchicalMenu
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}

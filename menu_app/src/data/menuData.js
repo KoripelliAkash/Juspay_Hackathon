@@ -21,7 +21,7 @@ import {
   Ticket,
   ShieldCheck,
   Banknote,
-  HeartPulse, // <-- THIS IS THE FIX (was Heartbeat)
+  HeartPulse, 
   ShoppingCart,
 } from 'lucide-react';
 
@@ -50,13 +50,13 @@ export const menuData = [
         icon: GraduationCap,
         title: 'Training & Workshops',
         description: 'Team skill development',
-        // --- LEVEL 3 MENU ---
+        
         children: [
            {
             icon: GraduationCap,
             title: 'On-site Workshops',
             description: 'In-person team training',
-            // --- LEVEL 4 MENU ---
+            
             children: [
               {
                 icon: Code,
@@ -83,7 +83,7 @@ export const menuData = [
     icon: Building,
     title: 'Industry Solutions',
     description: 'Specialized solutions for different industries',
-    // --- NEW NESTED MENUS ---
+    
     children: [
       {
         icon: Banknote,
@@ -108,7 +108,7 @@ export const menuData = [
         description: 'Solutions for online retailers'
       },
       {
-        icon: HeartPulse, // <-- THIS IS THE FIX (was Heartbeat)
+        icon: HeartPulse, 
         title: 'Healthcare',
         description: 'HIPAA-compliant platforms'
       }
@@ -118,7 +118,7 @@ export const menuData = [
     icon: Briefcase,
     title: 'Company',
     description: 'Learn about our organization and culture',
-    // --- NEW NESTED MENUS ---
+    
     children: [
       {
         icon: Users,
@@ -153,7 +153,7 @@ export const menuData = [
     icon: BookOpen,
     title: 'Resources',
     description: 'Knowledge base, tools, and learning materials',
-    // --- NEW NESTED MENUS ---
+    
     children: [
       {
         icon: FileText,
@@ -176,7 +176,7 @@ export const menuData = [
     icon: Headphones,
     title: 'Support',
     description: 'Get help and support when you need it',
-    // --- NEW NESTED MENUS ---
+    
     children: [
       {
         icon: LifeBuoy,

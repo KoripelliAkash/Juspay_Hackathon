@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence, useDragControls } from 'framer-motion'; // <-- Import useDragControls
+import { motion, AnimatePresence, useDragControls } from 'framer-motion'; 
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import './HierarchicalMenu.css';
 
-// Define animation variants for the panels
+
 const panelVariants = {
   center: {
     x: 0,
@@ -28,13 +28,13 @@ export const HierarchicalMenu = ({ isOpen, onClose, menuData, triggerRef }) => {
   
   const menuContainerRef = useRef(null);
 
-  // --- NEW: Setup Drag Controls ---
+  
   const dragControls = useDragControls();
   
   const currentPanel = navigationStack[navigationStack.length - 1];
   const currentLevel = navigationStack.length - 1;
 
-  // Handle focus management and stack reset
+  
   useEffect(() => {
     if (isOpen) {
       const timer = setTimeout(() => {
@@ -50,7 +50,7 @@ export const HierarchicalMenu = ({ isOpen, onClose, menuData, triggerRef }) => {
     }
   }, [isOpen]);
 
-  // Handle keyboard navigation
+  
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (!isOpen) return;
@@ -65,7 +65,7 @@ export const HierarchicalMenu = ({ isOpen, onClose, menuData, triggerRef }) => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, navigationStack]);
 
-  // --- EVENT HANDLERS ---
+  
   const handleItemClick = (item) => {
     if (item.children && item.children.length > 0) {
       setAnimationDirection('forward');
@@ -81,7 +81,7 @@ export const HierarchicalMenu = ({ isOpen, onClose, menuData, triggerRef }) => {
     setNavigationStack(navigationStack.slice(0, -1));
   };
 
-  // --- DRAG TO CLOSE HANDLER ---
+  
   const handleDragEnd = (event, info) => {
     const dragThreshold = 100;
     const velocityThreshold = 500;
@@ -91,7 +91,7 @@ export const HierarchicalMenu = ({ isOpen, onClose, menuData, triggerRef }) => {
     }
   };
 
-  // --- NEW: Start drag from the header area ---
+  
   const startDrag = (event) => {
     dragControls.start(event);
   };
@@ -127,10 +127,10 @@ export const HierarchicalMenu = ({ isOpen, onClose, menuData, triggerRef }) => {
               exit={{ y: "100%" }}
               transition={{ duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
 
-              // --- DRAG PROPS MOVED TO THE SHEET ---
+              
               drag="y"
-              dragControls={dragControls} // <-- Use controls
-              dragConstraints={{ top: 0 }} // <-- Can't drag up
+              dragControls={dragControls} 
+              dragConstraints={{ top: 0 }} 
               onDragEnd={handleDragEnd}
               dragSnapToOrigin
             >
@@ -144,10 +144,10 @@ export const HierarchicalMenu = ({ isOpen, onClose, menuData, triggerRef }) => {
                   exit={animationDirection === 'forward' ? 'left' : 'right'}
                 >
                   
-                  {/* --- NEW: This is the only part that starts the drag --- */}
+                  {}
                   <div 
                     className="drag-target-area" 
-                    onPointerDown={startDrag} // <-- Starts drag on pointer down
+                    onPointerDown={startDrag} 
                   >
                     <div className="drag-handle-container" aria-hidden="true">
                       <div className="drag-handle" />
@@ -175,7 +175,7 @@ export const HierarchicalMenu = ({ isOpen, onClose, menuData, triggerRef }) => {
                     </div>
                   </div>
                   
-                  {/* --- This list is now separate and will scroll --- */}
+                  {}
                   <ul className="panel-list">
                     {currentPanel.items.map((item) => {
                       const ItemIcon = item.icon;

@@ -4,7 +4,7 @@
   align-items: center;
   height: 100vh;
   width: 100vw;
-  /* From the screenshot, the button is not perfectly centered */
+  
   padding-top: 15vh;
   align-items: flex-start;
 }
@@ -15,7 +15,7 @@
   font-weight: 500;
   background-color: var(--primary);
   color: var(--primary-foreground);
-  border-radius: 9999px; /* Pill shape */
+  border-radius: 9999px; 
   box-shadow: var(--shadow-md);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
