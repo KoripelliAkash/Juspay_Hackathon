@@ -1,0 +1,157 @@
+/* --- Overlay --- */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  z-index: 40;
+}
+
+/* --- Container --- */
+.menu-container {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Aligns to bottom for mobile */
+  pointer-events: none; /* Pass clicks to overlay */
+}
+
+.menu-container:focus {
+  outline: none;
+}
+
+/* --- Bottom Sheet --- */
+.menu-sheet {
+  position: relative;
+  background-color: var(--card);
+  width: 100%;
+  max-width: 640px; /* Max width on desktop */
+  max-height: 85vh;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  box-shadow: var(--shadow);
+  pointer-events: auto; /* Re-enable clicks for the sheet */
+  
+  /* THIS IS THE CRITICAL CHANGE */
+  overflow: hidden; /* Clips the sliding panels */
+  
+  /* 'height' will be animated by Framer Motion's 'layout' prop */
+}
+
+/* --- Individual Panel --- */
+.menu-panel {
+  /* Panels are now rendered one at a time */
+  width: 100%;
+  padding: 1rem;
+  padding-top: 0.5rem;
+}
+
+/* --- Panel Header --- */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0.25rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.panel-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.panel-back-button,
+.panel-close-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--primary);
+  transition: background-color 0.2s;
+}
+
+.panel-close-button {
+  color: var(--muted-foreground);
+}
+
+.panel-back-button:hover,
+.panel-close-button:hover {
+  background-color: #f3f4f6;
+}
+
+/* --- Panel List & Items --- */
+.panel-list {
+  list-style: none;
+}
+
+.panel-item-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+  gap: 1rem;
+}
+
+.panel-item-button:hover {
+  background-color: #f3f4f6; /* Light gray hover */
+}
+
+.panel-item-button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+  background-color: #f3f4f6;
+}
+
+.item-icon {
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+}
+
+.item-text {
+  flex-grow: 1;
+}
+
+.item-title {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--card-foreground);
+}
+
+.item-description {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+
+.item-chevron {
+  color: var(--muted-foreground);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+
+/* --- Responsive Desktop View --- */
+@media (min-width: 640px) {
+  .menu-container {
+    /* Center it on desktop */
+    align-items: center;
+  }
+
+  .menu-sheet {
+    /* Make it look like a modal */
+    border-radius: var(--radius);
+    max-height: 70vh;
+    box-shadow: var(--shadow-lg);
+  }
+}
