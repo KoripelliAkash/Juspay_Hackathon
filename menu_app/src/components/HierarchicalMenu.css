@@ -30,30 +30,53 @@
   background-color: var(--card);
   width: 100%;
   max-width: 640px;
-  max-height: 85vh; /* This is the max height of the *sheet* */
+  max-height: 85vh;
   box-shadow: var(--shadow);
   pointer-events: auto;
-  overflow: hidden; /* This MUST be hidden for the slide animation */
+  overflow: hidden;
   border-radius: var(--radius);
+  touch-action: none;
 }
 
 /* --- Individual Panel --- */
 .menu-panel {
   width: 100%;
-  padding: 1rem;
-  padding-top: 0.5rem;
+  max-height: 85vh; /* Match the sheet's max-height */
   
-  /* --- 
-    FIX ADDED HERE:
-    We make the panel scrollable.
-  --- */
-  overflow-y: auto; /* Add a scrollbar if content is too tall */
-  max-height: 85vh; /* The panel's max height must match the sheet's */
-  /* This works because the sheet's 'layout' prop animates the 
-    height up to 85vh. If the content is taller, this
-    panel will be 85vh tall and its *own* content will scroll.
-  */
+  /* --- NEW: Use Flexbox to separate header from list --- */
+  display: flex;
+  flex-direction: column;
+  
+  /* Padding is removed, will be added to children */
+  padding: 0; 
 }
+
+/* --- NEW: Drag Target Area --- */
+.drag-target-area {
+  flex-shrink: 0; /* Prevents this area from shrinking */
+  cursor: grab; /* Shows users it's draggable */
+  padding: 0 1rem; /* Add back the horizontal padding */
+}
+.drag-target-area:active {
+  cursor: grabbing;
+}
+
+/* --- Drag Handle Styles --- */
+.drag-handle-container {
+  width: 100%;
+  padding: 0.75rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.drag-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--border);
+}
+
 
 /* --- Panel Header --- */
 .panel-header {
@@ -63,15 +86,6 @@
   padding: 0.75rem 0.25rem;
   margin-bottom: 0.5rem;
   border-bottom: 1px solid var(--border);
-  
-  /* Optional: Make the header sticky 
-    (uncomment the 3 lines below if you want this) 
-  */
-  /*
-  position: sticky;
-  top: -1.5rem; 
-  background-color: var(--card);
-  */
 }
 
 .panel-title {
@@ -91,9 +105,6 @@
   font-weight: 500;
   color: var(--primary);
   transition: background-color 0.2s;
-  
-  /* Ensure buttons appear above list content if header is sticky */
-  /* z-index: 1; */ 
 }
 
 .panel-close-button {
@@ -108,6 +119,22 @@
 /* --- Panel List & Items --- */
 .panel-list {
   list-style: none;
+  
+  /* --- NEW: This is now the scrollable part --- */
+  overflow-y: auto;
+  flex-grow: 1; /* Takes up all remaining space */
+  padding: 0 1rem 1rem 1rem; /* Add horizontal and bottom padding */
+  
+  /* --- NEW: HIDE THE SCROLLBAR --- */
+  /* Firefox */
+  scrollbar-width: none;
+  /* IE and Edge */
+  -ms-overflow-style: none;
+}
+
+/* Webkit (Chrome, Safari) */
+.panel-list::-webkit-scrollbar {
+  display: none;
 }
 
 .panel-item-button {
@@ -172,6 +199,22 @@
   }
   
   .menu-panel {
-    max-height: 70vh; /* Match the desktop max-height */
+    max-height: 70vh;
+  }
+  
+  /* Hide drag handle and remove grab cursor on desktop */
+  .drag-handle-container {
+    display: none;
+  }
+  .drag-target-area {
+    cursor: default;
+    padding-top: 1rem; /* Add back padding since handle is gone */
+  }
+  .drag-target-area:active {
+    cursor: default;
+  }
+
+  .panel-list {
+    padding-top: 0; /* Reset padding */
   }
 }
