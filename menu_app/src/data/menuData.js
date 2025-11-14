@@ -13,7 +13,7 @@ import {
   Code,
   LineChart,
   GraduationCap,
-} from 'lucide-react'; // <-- CORRECTED
+} from 'lucide-react';
 
 export const menuData = [
   {
@@ -39,12 +39,31 @@ export const menuData = [
       {
         icon: GraduationCap,
         title: 'Training & Workshops',
-        description: 'Team skill development and knowledge transfer',
+        description: 'Team skill development',
+        // --- LEVEL 3 MENU ---
         children: [
            {
             icon: GraduationCap,
-            title: 'Level 3 Menu',
-            description: 'You can go as deep as you want',
+            title: 'On-site Workshops',
+            description: 'In-person team training',
+            // --- LEVEL 4 MENU ---
+            children: [
+              {
+                icon: Code,
+                title: 'Advanced React',
+                description: 'Hooks, patterns, and performance'
+              },
+              {
+                icon: Code,
+                title: 'Design Systems',
+                description: 'Building scalable UI'
+              }
+            ]
+          },
+          {
+            icon: BookOpen,
+            title: 'Digital Courses',
+            description: 'Self-paced learning'
           },
         ]
       },

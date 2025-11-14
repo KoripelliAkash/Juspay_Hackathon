@@ -14,8 +14,10 @@
   z-index: 50;
   display: flex;
   justify-content: center;
-  align-items: flex-end; /* Aligns to bottom for mobile */
-  pointer-events: none; /* Pass clicks to overlay */
+  align-items: flex-end;
+  pointer-events: none;
+  padding: 0.5rem;
+  box-sizing: border-box;
 }
 
 .menu-container:focus {
@@ -27,25 +29,30 @@
   position: relative;
   background-color: var(--card);
   width: 100%;
-  max-width: 640px; /* Max width on desktop */
-  max-height: 85vh;
-  border-top-left-radius: var(--radius);
-  border-top-right-radius: var(--radius);
+  max-width: 640px;
+  max-height: 85vh; /* This is the max height of the *sheet* */
   box-shadow: var(--shadow);
-  pointer-events: auto; /* Re-enable clicks for the sheet */
-  
-  /* THIS IS THE CRITICAL CHANGE */
-  overflow: hidden; /* Clips the sliding panels */
-  
-  /* 'height' will be animated by Framer Motion's 'layout' prop */
+  pointer-events: auto;
+  overflow: hidden; /* This MUST be hidden for the slide animation */
+  border-radius: var(--radius);
 }
 
 /* --- Individual Panel --- */
 .menu-panel {
-  /* Panels are now rendered one at a time */
   width: 100%;
   padding: 1rem;
   padding-top: 0.5rem;
+  
+  /* --- 
+    FIX ADDED HERE:
+    We make the panel scrollable.
+  --- */
+  overflow-y: auto; /* Add a scrollbar if content is too tall */
+  max-height: 85vh; /* The panel's max height must match the sheet's */
+  /* This works because the sheet's 'layout' prop animates the 
+    height up to 85vh. If the content is taller, this
+    panel will be 85vh tall and its *own* content will scroll.
+  */
 }
 
 /* --- Panel Header --- */
@@ -56,6 +63,15 @@
   padding: 0.75rem 0.25rem;
   margin-bottom: 0.5rem;
   border-bottom: 1px solid var(--border);
+  
+  /* Optional: Make the header sticky 
+    (uncomment the 3 lines below if you want this) 
+  */
+  /*
+  position: sticky;
+  top: -1.5rem; 
+  background-color: var(--card);
+  */
 }
 
 .panel-title {
@@ -75,6 +91,9 @@
   font-weight: 500;
   color: var(--primary);
   transition: background-color 0.2s;
+  
+  /* Ensure buttons appear above list content if header is sticky */
+  /* z-index: 1; */ 
 }
 
 .panel-close-button {
@@ -103,7 +122,7 @@
 }
 
 .panel-item-button:hover {
-  background-color: #f3f4f6; /* Light gray hover */
+  background-color: #f3f4f6;
 }
 
 .panel-item-button:focus-visible {
@@ -144,14 +163,15 @@
 /* --- Responsive Desktop View --- */
 @media (min-width: 640px) {
   .menu-container {
-    /* Center it on desktop */
     align-items: center;
+    padding: 0;
   }
 
   .menu-sheet {
-    /* Make it look like a modal */
-    border-radius: var(--radius);
     max-height: 70vh;
-    box-shadow: var(--shadow-lg);
+  }
+  
+  .menu-panel {
+    max-height: 70vh; /* Match the desktop max-height */
   }
 }
