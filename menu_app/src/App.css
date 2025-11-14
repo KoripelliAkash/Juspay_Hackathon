@@ -1,4 +1,4 @@
-/* --- DEFAULT (MOBILE) STYLES --- */
+
 
 .app-container {
   display: flex;
@@ -11,13 +11,13 @@
 }
 
 .open-menu-button {
-  /* This is the mobile pill button */
+  
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   font-weight: 500;
   background-color: var(--primary);
   color: var(--primary-foreground);
-  border-radius: 9999px; /* Pill shape */
+  border-radius: 9999px; 
   box-shadow: var(--shadow-md);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -32,7 +32,7 @@
   outline-offset: 2px;
 }
 
-/* By default, show text and hide icon */
+
 .open-menu-text {
   display: block;
 }
@@ -41,19 +41,19 @@
 }
 
 
-/* --- DESKTOP STYLES (min-width: 640px) --- */
+
 @media (min-width: 640px) {
   .app-container {
-    /* Move container to top-left */
+    
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 2rem; /* Add some spacing from the edge */
+    padding: 2rem; 
   }
 
   .open-menu-button {
-    /* Reset the pill button to be a simple icon button */
+    
     background-color: transparent;
-    color: var(--foreground); /* Make icon dark */
+    color: var(--foreground); 
     padding: 0.5rem;
     border-radius: var(--radius);
     box-shadow: none;
@@ -61,7 +61,7 @@
   }
 
   .open-menu-button:hover {
-    /* Simple gray background on hover */
+    
     background-color: #f3f4f6;
     transform: none;
     box-shadow: none;
@@ -71,7 +71,7 @@
     background-color: #f3f4f6;
   }
 
-  /* On desktop, hide text and show icon */
+  
   .open-menu-text {
     display: none;
   }

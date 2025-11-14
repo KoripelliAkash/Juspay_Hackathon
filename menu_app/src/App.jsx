@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { Menu } from 'lucide-react'; // <-- Import the hamburger icon
+import { Menu } from 'lucide-react'; 
 import './App.css';
 import { HierarchicalMenu } from './components/HierarchicalMenu';
 import { menuData } from './data/menuData';
@@ -18,10 +18,10 @@ function App() {
         aria-expanded={isMenuOpen}
         aria-controls="hierarchical-menu"
       >
-        {/* This text will show on mobile */}
+        {}
         <span className="open-menu-text">Open Menu</span>
         
-        {/* This icon will show on desktop */}
+        {}
         <Menu className="open-menu-icon" size={28} />
       </button>
 
