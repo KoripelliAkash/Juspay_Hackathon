@@ -13,6 +13,16 @@ import {
   Code,
   LineChart,
   GraduationCap,
+  HeartHandshake,
+  Users,
+  FileText,
+  Video,
+  LifeBuoy,
+  Ticket,
+  ShieldCheck,
+  Banknote,
+  HeartPulse, // <-- THIS IS THE FIX (was Heartbeat)
+  ShoppingCart,
 } from 'lucide-react';
 
 export const menuData = [
@@ -73,21 +83,117 @@ export const menuData = [
     icon: Building,
     title: 'Industry Solutions',
     description: 'Specialized solutions for different industries',
+    // --- NEW NESTED MENUS ---
+    children: [
+      {
+        icon: Banknote,
+        title: 'Fintech',
+        description: 'Payments, banking, and insurance',
+        children: [
+          {
+            icon: Code,
+            title: 'Business Strategy: Payment Gateway',
+            description: 'Integrate our payment solutions'
+          },
+          {
+            icon: ShieldCheck,
+            title: 'Fraud Detection',
+            description: 'AI-powered security'
+          }
+        ]
+      },
+      {
+        icon: ShoppingCart,
+        title: 'E-commerce',
+        description: 'Solutions for online retailers'
+      },
+      {
+        icon: HeartPulse, // <-- THIS IS THE FIX (was Heartbeat)
+        title: 'Healthcare',
+        description: 'HIPAA-compliant platforms'
+      }
+    ]
   },
   {
     icon: Briefcase,
     title: 'Company',
     description: 'Learn about our organization and culture',
+    // --- NEW NESTED MENUS ---
+    children: [
+      {
+        icon: Users,
+        title: 'About Us',
+        description: 'Our mission and values'
+      },
+      {
+        icon: HeartHandshake,
+        title: 'Careers',
+        description: 'Join our growing team',
+        children: [
+          {
+            icon: Code,
+            title: 'Engineering',
+            description: 'View open roles'
+          },
+          {
+            icon: LineChart,
+            title: 'Marketing',
+            description: 'View open roles'
+          }
+        ]
+      },
+      {
+        icon: FileText,
+        title: 'Press',
+        description: 'News and announcements'
+      }
+    ]
   },
   {
     icon: BookOpen,
     title: 'Resources',
     description: 'Knowledge base, tools, and learning materials',
+    // --- NEW NESTED MENUS ---
+    children: [
+      {
+        icon: FileText,
+        title: 'Documentation',
+        description: 'API refs and guides'
+      },
+      {
+        icon: Video,
+        title: 'Tutorials',
+        description: 'Step-by-step video guides'
+      },
+      {
+        icon: Briefcase,
+        title: 'Case Studies',
+        description: 'See our client success'
+      }
+    ]
   },
   {
     icon: Headphones,
     title: 'Support',
     description: 'Get help and support when you need it',
+    // --- NEW NESTED MENUS ---
+    children: [
+      {
+        icon: LifeBuoy,
+        title: 'Help Center',
+        description: 'Find answers to FAQs'
+      },
+      {
+        icon: Ticket,
+        title: 'Submit a Ticket',
+        description: 'Contact our support team'
+      },
+      {
+        icon: ShieldCheck,
+        title: 'System Status',
+        description: 'Check our service uptime'
+      }
+    ]
   },
   {
     icon: FlaskConical,
